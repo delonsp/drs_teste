@@ -1,0 +1,151 @@
+@charset "UTF-8";
+/* CSS Document */
+
+
+
+body, table {
+	font-family: Verdana, Helvetica, Arial, sans-serif;
+	font-size: 12px;
+}
+
+#signature {
+   
+   width:250px;
+   margin-top: 20px;   
+   float:right;
+ }
+
+ #autorizacao_paciente {
+ 	width:300px;
+ 	margin-top: 20px;
+ 	float:left;
+ }
+
+#containerForm2 {
+	float: right;
+	
+}
+
+
+#containerForm1 {
+	float: left;
+	margin-right: 5px;
+}
+
+ 	
+.pbreak {
+page-break-after: always;
+}
+
+.receitaContainer {
+	margin: 50px;
+	width: 98%;
+	top: 0px;
+	height: auto;
+	margin: 0 auto 2em;
+}
+.receitaContainer table {
+width: 98%;
+border-collapse: separate;
+border-spacing: 0px;
+}
+.receitaContainer table td {
+padding: 4px;
+}
+.receitaContainer table td.htitle {
+background-color: #d0d0d0;
+color: black;
+text-align: center;
+font-size: 18px;
+font-family: Verdana, Helvetica, Arial, sans-serif;
+font-weight: bold;
+border: 1px solid black;
+}
+.receitaContainer table td.htitle2 {
+background-color: #e8e8e8;
+color: black;
+text-align: center;
+font-size: 14px;
+font-family: Verdana, Helvetica, Arial, sans-serif;
+border-top: 1px solid black;
+border-left: 1px solid black;
+border-right: 1px solid black;
+}
+.receitaContainer table td.tdh {
+font-size: 12px;
+font-family: Verdana, Helvetica, Arial, sans-serif;
+border: 1px solid black;
+}
+.receitaContainer dt {
+float: left;
+}
+.receitaContainer dd {
+padding-left: 50px;
+}
+
+.receitaContainer h3 {
+	line-height: 200%;
+}
+
+.pcont {
+margin: 0 auto;
+text-align: left;
+min-height: 530px;
+width: 98%;
+position: relative;
+}
+.pfoot {
+width: 98%;
+position: relative;
+bottom: 0px;
+}
+.pfoot table {
+width: 100%;
+}
+.pfoot table tr {
+vertical-align: top;
+}
+.pfoot table td {
+padding: 8px;
+}
+.pfoot table td.tdass {
+height: 50px;
+text-align: right;
+padding-right: 30px;
+}
+.pfoot .ass {
+float: right;
+width: 270px;
+font-size: 12px;
+font-family: Verdana, Helvetica, Arial, sans-serif;
+border-top: 1px solid black;
+text-align: center;
+height: 30px;
+line-height: 24px;
+}
+button {
+cursor: pointer;
+border-radius: 1px;
+border: 1px solid #183060;
+background-color: #e0e0f0;
+height: 20px;
+line-height: 18px;
+font-size: 12px;
+margin: 10px;
+float: right;
+color: #183060;
+}
+
+ul.list > li {
+font-size: 1em;
+height: 1.2em;
+line-height: 1.2em;
+}
+
+
+
+@media print {
+.no-print, .no-print * { display: none !important; }
+}
+
+

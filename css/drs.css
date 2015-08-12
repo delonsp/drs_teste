@@ -1,0 +1,90 @@
+@charset "UTF-8";
+/* CSS Document */
+
+
+
+
+.appStore {
+	
+	height:90px;
+	margin: 20px 0px;
+	background: url(../img/appStore.png) 50% 0px no-repeat;	
+}
+
+#depoimentos .depo {
+	
+	padding: 0px 0px 50px 0px; 	
+	
+}
+
+#produtos .espaco {
+
+	margin-bottom: 50px;
+}
+
+#portfolio p {
+	
+	font-size: 1.2em;
+	
+}
+
+#portfolio #redTag {
+	
+	color: blue;
+	
+}
+
+.contact_us #envioSucesso {
+	
+	margin-bottom: 10px;
+	color:white;
+	font-size:1.2em;
+	
+	
+}
+
+#envioSucesso {
+	
+	margin-bottom: 10px;
+	color:blue;	
+	font-size:1.2em;
+}
+
+#myLinks .row {
+
+	margin-bottom: 20px;
+}
+
+.linksDRS { 
+	font-size:1.8em;
+	
+}
+
+.my-div {
+
+	margin-right: 0px;
+}
+
+.red {
+	color:red;
+}
+
+pre {
+	background-color: #E6E6E6;
+
+}
+
+.modalDiv {
+	background-color: #E6E6E6;
+	padding: 5px;
+	border-radius: 3px;
+}
+
+
+
+.hidden {
+	visibility: hidden;
+}
+
+
+

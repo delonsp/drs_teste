@@ -1,0 +1,6 @@
+mudancas_bootstrap2-3.txt
+
+
+control-label = control-label col-sm-4
+controls = col-sm-8
+Sform-control = form-control
