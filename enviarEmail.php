@@ -2,7 +2,7 @@
 
 session_start();
 
-require("phpmailer/class.phpmailer.php");
+require("libraries/class.phpmailer.php");
 
 $pageTitle="envio de email";
 
