@@ -6,8 +6,6 @@ function customPageHeader() { ?>
 <?php }
 
 include_once("views/_header.php");
-//include("debugger/ChromePhp.php");
-
 
 $userID = $_SESSION['user_id'];
 $userEmail = $_SESSION['user_email']; 

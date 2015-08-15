@@ -8,7 +8,6 @@
 
 // load php-login class
 require_once("classes/PHPLogin.php");
-include_once("debugger/ChromePHP.php");
 
 
 // the login object will do all login/logout stuff automatically
@@ -20,7 +19,6 @@ include_once("debugger/ChromePHP.php");
 // include('views/_header.php');
 
 $login = new PHPLogin();
-ChromePhp::log($_SESSION);
 
 // show the registration form
 if (isset($_GET['register']) && ! $login->isRegistrationSuccessful() && 

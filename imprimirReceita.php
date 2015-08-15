@@ -1,9 +1,4 @@
-<?php include_once("debugger/ChromePhp.php");
-$on_off = (!isset($_POST['email_mim']) ? "off" : "on"); 
-ChromePhp::Log($on_off);
-
-
-
+<?php 
  session_start();  
 
  ?>
