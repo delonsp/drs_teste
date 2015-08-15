@@ -8,7 +8,7 @@ function customPageHeader() { ?>
 
 <?php }
 
-include_once("header.php");
+include_once("views/_header.php");
     
 ?>        
     <h2 class="section_header2">Introduzir/Editar Exames</h2>
@@ -96,7 +96,7 @@ include_once("header.php");
         </div>
     </div>
     <script type="text/javascript" src="js/drs3.js"></script>
-   <?php include_once('footer.php'); ?>
+   <?php include_once('views/_footer.php'); ?>
 
 
  

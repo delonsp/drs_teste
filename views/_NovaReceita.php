@@ -8,7 +8,7 @@ function customPageHeader() {
 
 }
 
-include_once("header.php");
+include_once("views/_header.php");
 
 
 if (isset($_GET['man']) && $_GET['man']==1) {
@@ -109,7 +109,7 @@ echo "<script>var m=$m</script>";
     </div>
     
     <script src="js/drs2.js"></script>
-    <?php include_once('footer.php'); ?>
+    <?php include_once('views/_footer.php'); ?>
 
 
  

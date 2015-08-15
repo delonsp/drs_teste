@@ -10,7 +10,7 @@ function customPageHeader() { ?>
 
 <?php }
 
-include_once("header.php");
+include_once("views/_header.php");
 ?>
 
 <div class="container">
@@ -140,4 +140,4 @@ if(isset($_POST['receitas2']) && !empty($_POST['receitas2'])) {
 
 <?
 
-include_once('footer.php');
+include_once('views/_footer.php');

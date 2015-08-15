@@ -8,7 +8,7 @@ function customPageHeader() { ?>
 
 <?php }
 
-include_once("header.php");
+include_once("views/_header.php");
 
 $soler = "Clinica Medica Soler. Av. Satélite 84, São Mateus, São Paulo, SP | tel (11) 2014-4599";
 
@@ -104,6 +104,6 @@ $nome = (isset($_SESSION['nome']) ? $_SESSION['nome'] : null );
         	</div>
     	</div>
     </div>
-    <?php include_once("footer.php"); ?>
+    <?php include_once("views/_footer.php"); ?>
 
  

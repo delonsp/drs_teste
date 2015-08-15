@@ -5,7 +5,7 @@ function customPageHeader() { ?>
 
 <?php }
 
-include_once("header.php");
+include_once("views/_header.php");
 
 $userID = $_SESSION['user_id'];
 $userEmail = $_SESSION['user_email']; 
@@ -43,6 +43,7 @@ $userEmail = $_SESSION['user_email'];
                                 foreach ($userconfig->messages as $message) {
                                     echo "<h4>$message</h4><br/>";
                                 }
+                                echo '<a href="index.php" class="btn btn-primary btn-lg">Menu principal</a>';
                                 echo '</div>';
                                 echo '<script type="text/javascript">
 
@@ -115,4 +116,4 @@ $userEmail = $_SESSION['user_email'];
         	</div>
     	</div>
     </div>
-  <?php include_once("footer.php"); ?>
+  <?php include_once("views/_footer.php"); ?>

@@ -5,7 +5,7 @@ function customPageHeader() { ?>
 
 <?php }
 
-include_once("header.php");
+include_once("views/_header.php");
 
 $userID = $_SESSION['user_id'];
 $userEmail = $_SESSION['user_email'];                       
@@ -74,14 +74,14 @@ $userEmail = $_SESSION['user_email'];
                         <label class="control-label col-sm-4" for="nomeDoPaciente">Nome do paciente:</label>
                         <div class="col-sm-8">
                                                             
-                            <input type="text" class="form-control" id="nomeDoPaciente" size="30" name="nomeDoPaciente" value="<?php echo $nome; ?>"/>
+                            <input type="text" class="form-control" id="nomeDoPaciente" name="nomeDoPaciente" value="<?php echo $nome; ?>"/>
 
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-4" for="endDoPaciente">Endereço:</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="endDoPaciente" size="100" name="endDoPaciente" value="<?php echo $end_paciente; ?>">
+                            <input type="text" class="form-control" id="endDoPaciente"  name="endDoPaciente" value="<?php echo $end_paciente; ?>">
                         </div>
                     </div>
                     <div class="form-group">
@@ -132,7 +132,7 @@ $userEmail = $_SESSION['user_email'];
                     <div class="form-group">
                         
                         <div class="col-sm-12">
-                            <input type="submit" id="enviarBtn" value="enviar" class="btn btn-success btn-lg" />
+                            <input type="submit" id="form1_submit" value="enviar" class="btn btn-success btn-lg" />
                         </div>
                     </div>
                      
@@ -141,13 +141,12 @@ $userEmail = $_SESSION['user_email'];
             <div class="col-md-1"></div>
             <div class="col-md-5">
                 <form  method="post" action="imprimirReceita.php" id="form2">
-                    <div class="form-group">
-                        
+                   
                             <?php
 
  
-                            if( isset($_POST['nomeDoPaciente']) && isset($_POST['telsDoPaciente']) &&
-                                !empty($_POST['nomeDoPaciente']) && !empty($_POST['telsDoPaciente']) &&
+                            if( isset($_POST['nomeDoPaciente']) && ! empty($_POST['nomeDoPaciente']) &&
+                                
                                 isset($_POST['listaMedic']) && !empty($_POST['listaMedic'])) {
                                 
                             
@@ -190,6 +189,7 @@ $userEmail = $_SESSION['user_email'];
                                 }
                             $consolidado = trim($consolidado);
                             ?>
+                        <div class="form-group">
                             <label for="receitas">Editar se necessário</label>              
                             <textarea rows='17' class='form-control' cols='50' id='receitas' name='receitas'><? echo $consolidado; ?></textarea>
                              
@@ -199,9 +199,9 @@ $userEmail = $_SESSION['user_email'];
                             $logo = mysqli_query($con,"SELECT `$logoDB` FROM $tabelaTISS WHERE `$localDB` = '$nomeClinica'");
                             $logo = $logo->fetch_assoc()[$logoDB];
                                                 
-                        ?>
+                            ?>
                        
-                    </div>
+                        </div>
                     <?php 
 
                         $pharmas = $_SESSION['array_pharmas'];
@@ -220,7 +220,7 @@ $userEmail = $_SESSION['user_email'];
 
                         <label>
                             <input type="checkbox" checked="<?php echo $checked;?>" id="email_<?php echo $i; ?>"  name="email_<?php echo $i;?>"  />
-                            <?php echo $pharma['nome']; ?>
+                            <?php echo "Email para: ".$pharma['nome']; ?>
                         </label>
 
                     </div>
@@ -231,7 +231,7 @@ $userEmail = $_SESSION['user_email'];
                        
                         <label>
                             <input type="checkbox" checked="<?php echo $checked;?>" id="email_mim"  name="email_mim"  />
-                            Email com receita para mim
+                            Email com cópia para mim
                         </label>
                         
                     </div>
@@ -256,12 +256,10 @@ $userEmail = $_SESSION['user_email'];
 
                     
                             
-                    <input type='submit' class='btn btn-info btn-lg' value='enviar'>
+                    <input type='submit' id="form2_submit" class='btn btn-info btn-lg' value='enviar'>
                      
 
-                    <?php
-                    } // closes the if isset(POST[]....
-                        
+                    <?php  } // closes the if(...)                   
                     ?>
                     
                     
@@ -269,9 +267,8 @@ $userEmail = $_SESSION['user_email'];
              </div>
         </div>
     </div>
-        
 
-<?php include_once('footer.php'); ?>
+<?php include_once('views/_footer.php'); ?>
 
  
   

@@ -1,28 +1,25 @@
     <?php
 // include_once("connectMedic.php");
 
-include_once("debugger/ChromePHP.php");
 
 $pageTitle="Menu";
+
 
 function customPageHeader() { ?>
 
 <?php }
 
-include_once("header.php");
+include_once("views/_header.php");
+
 
 ?>
-  
-
     <div id="myLinks">
-
-
         <div class="container">
-        
-            <h2 class="section_header">
-                
-            </h2>
-
+            <div class="row">
+                <div class="col-md-12">
+                     <h2 class="section_header2">Menu</h2>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-md-12">
                     <?php include_once("CheckUserConfig.php");?>
@@ -59,4 +56,4 @@ include_once("header.php");
             
          </div>
     </div>
-<?php include_once("footer.php"); ?>
+<?php include_once("views/_footer.php"); ?>

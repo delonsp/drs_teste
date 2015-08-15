@@ -636,6 +636,16 @@ div.form-inline {
 	margin-top: 20px;
 }
 
+fieldset {
+		display: inline;
+		text-align: left;
+		border: 1px solid #6fa3c4;
+		margin: 0 auto;
+		padding: 15px;
+		border-radius: 6px;
+		margin-bottom: 15px;
+		width: 350px;
+	}
 
 /* Responsive
 -------------------------------------------------- */
@@ -874,6 +884,11 @@ div.form-inline {
 	}
 	#footer .copyright .copy p {
 		margin-top: 0px;
+	}
+
+	fieldset {
+		
+		width: 300px;
 	}
 
 	/*Header */

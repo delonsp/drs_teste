@@ -5,7 +5,7 @@ function customPageHeader() { ?>
 
 <?php }
 
-include_once("header.php");
+include_once("views/_header.php");
 
 $userID = $_SESSION['user_id'];
 $userEmail = $_SESSION['user_email']; 
@@ -122,4 +122,4 @@ $userEmail = $_SESSION['user_email'];
     </div>
    
     <script src="js/drs4.js"></script>
-   <?php include_once("footer.php"); ?>
+   <?php include_once("views/_footer.php"); ?>

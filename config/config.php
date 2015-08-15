@@ -14,7 +14,7 @@
  * DB_PASS: the password of the above user
  */
 define("DB_HOST", "127.0.0.1:8889");
-define("DB_NAME", "login");
+define("DB_NAME", "drsoluti2");
 define("DB_USER", "not_root");
 define("DB_PASS", "not_root");
 
