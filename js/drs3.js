@@ -89,15 +89,8 @@ $('#envioBtn').click(function(event) { // busca de nomeDoExame ativo
             
         $('.modal-body').html(html);
         
-        $('.btn').click(function(event) { // editar medicacao
-            doNotShowSecondForm = false;
-            $('#myModal').modal('hide');
-           
-            // runs js function to populate the form with the chosen record for change
-
-            runUpdateAjax(this.id, usuario_id);
-
-        });
+        $('.mostraFormBtn').trigger();
+        runUpdateAjax(this.id);
         
         
     })
@@ -143,6 +136,11 @@ $('.save-btn').on("click", function(event) { // actualy updates or save a new re
         data: myData
     })
     .done(function(html) {
+        if (html.indexOf("Dados inválidos.")!= -1) {
+            doNotShowSecondForm = false;
+        } else {
+            doNotShowSecondForm = true;
+        }
         $('#myModal').modal('show'); // mostra modal que insercao no banco de dados foi com sucesso ou não
         $('#myModalLabel').html("Inserção/Edição de Exames");
         $('.modal-body').html(html);
@@ -151,11 +149,7 @@ $('.save-btn').on("click", function(event) { // actualy updates or save a new re
             visibility: 'hidden',
             
         });
-        if (html.indexOf("Dados inválidos.")!=-1) {
-            doNotShowSecondForm = false;
-        } else {
-            doNotShowSecondForm = true;
-        }
+        
         
         
     })

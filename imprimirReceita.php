@@ -1,4 +1,13 @@
-<?php session_start(); ?>
+<?php include_once("debugger/ChromePhp.php");
+$on_off = (!isset($_POST['email_mim']) ? "off" : "on"); 
+ChromePhp::Log($on_off);
+
+
+
+ session_start();  
+
+ ?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -111,6 +120,7 @@
            
             <?php } // closes the foreach
             $on_off = (!isset($_POST['email_mim']) ? "off" : "on"); 
+            
             ?>
             <input type="hidden" id="pharma_email_mim" name="pharma_email_mim" value='<?php echo $on_off; ?>'/>
         </form>        

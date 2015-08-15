@@ -192,7 +192,7 @@ class DataTasks
         		return $mensagem;
 
         	} else {
-        		$this->errors[] = $query;//"Desculpe, não achei registros no banco de dados.";
+        		$this->errors[] = "Desculpe, não achei registros no banco de dados.";
         		return null;
         	}
 

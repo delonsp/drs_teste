@@ -53,7 +53,7 @@ $(function() {
             // habilita callback para mostrar de novo o formulario inicial de principio ativo
             // e esconder o formulario de nova medicacao.
 
-
+            
             if (doNotShowSecondForm) {
                 
                 $('#firstFormRow').show();
@@ -90,15 +90,8 @@ $('#envioBtn').click(function(event) { // busca de principio ativo
             
         $('.modal-body').html(html);
         
-        $('.btn').click(function(event) { // editar medicacao
-            doNotShowSecondForm = false;
-            $('#myModal').modal('hide');
-           
-            // runs js function to populate the form with the chosen record for change
-
-            runUpdateAjax(this.id);
-
-        });
+        $('.mostraFormBtn').trigger();
+        runUpdateAjax(this.id);
         
         
     })
@@ -143,6 +136,12 @@ $('.save-btn').on("click", function(event) { // actually updates or save a new r
         data: myData
     })
     .done(function(html) {
+        if (html.indexOf("Dados inválidos.") != -1) {
+            doNotShowSecondForm = false;
+        } else {
+            doNotShowSecondForm = true;
+        }
+         //alert(html + " " + doNotShowSecondForm);
         $('#myModal').modal('show'); // mostra modal que insercao no banco de dados foi com sucesso ou não
         $('#myModalLabel').html("Inserção/Edição de Medicamentos");
         $('.modal-body').html(html);
@@ -151,11 +150,7 @@ $('.save-btn').on("click", function(event) { // actually updates or save a new r
             visibility: 'hidden',
             
         });
-        if (html.indexOf("Dados inválidos.")!=-1) {
-            doNotShowSecondForm = false;
-        } else {
-            doNotShowSecondForm = true;
-        }
+        
         
         
     })

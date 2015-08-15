@@ -7,8 +7,7 @@ function customPageHeader() { ?>
 
 include_once("views/_header.php");
 
-$userID = $_SESSION['user_id'];
-$userEmail = $_SESSION['user_email'];                       
+$userID = $_SESSION['user_id'];                     
                                                                                                                                                                         
 
 ?>
@@ -131,8 +130,8 @@ $userEmail = $_SESSION['user_email'];
                     </div><!-- fecha form-group select clinica-->
                     <div class="form-group">
                         
-                        <div class="col-sm-12">
-                            <input type="submit" id="form1_submit" value="enviar" class="btn btn-success btn-lg" />
+                        <div class="col-sm-8">
+                            <input type="submit" id="enviarBtn" value="enviar" class="btn btn-success btn-lg" />
                         </div>
                     </div>
                      
@@ -259,9 +258,12 @@ $userEmail = $_SESSION['user_email'];
                     <input type='submit' id="form2_submit" class='btn btn-info btn-lg' value='enviar'>
                      
 
-                    <?php  } // closes the if(...)                   
-                    ?>
+                    <?php  } else // closes the if(...)
                     
+                        echo '<div class="alert alert-info">Não se esqueça de preencher todos os campos ao lado e clicar enviar.<br>
+                        Se houver interesse em mandar email para alguma farmácia, insira também os telefones de contato.</div>';
+                      
+                    ?>
                     
                 </form>
              </div>

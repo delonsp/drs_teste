@@ -240,7 +240,10 @@ $userEmail = $_SESSION['user_email'];
                    
                         
                     </div>
-                  <? } // closes the if ?>
+                  <? } // closes the if
+                        else echo '<div class="alert alert-info">Não se esqueça de preencher todos os campos ao lado e clicar enviar.<br>
+                        Você terá chance de editar a lista de exames em uma caixa abaixo antes de imprimir.</div>';
+                   ?>
                 </form>
             </div>
         

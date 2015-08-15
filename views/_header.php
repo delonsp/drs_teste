@@ -95,4 +95,14 @@
       
     </div>
     <!-- ends navbar -->
-  <p><?php echo ($_SESSION['user_name']  ? WORDING_YOU_ARE_LOGGED_IN_AS . '<b>' . $_SESSION['user_name'] : '' ); ?></b></p><hr/>
+    <div class="row">
+        <div class="col-sm-3">
+            <?php echo ($_SESSION['user_name']  ? '<div class="alert alert-warning" role="alert">
+  <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> ' . WORDING_YOU_ARE_LOGGED_IN_AS .
+  "<b>" . $_SESSION['user_name']. "</b>" . '</div>' : '' ); ?>
+        </div>
+    </div>
+  
+
+
+

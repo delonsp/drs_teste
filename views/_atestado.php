@@ -16,6 +16,8 @@ $local = (isset($_SESSION['local']) ? $_SESSION['local'] : null );
 
 $nome = (isset($_SESSION['nome']) ? $_SESSION['nome'] : null );
 
+$userID = $_SESSION['user_id']; 
+
 ?>
     
 	<div id="contact" class="contact_page">
@@ -51,8 +53,17 @@ $nome = (isset($_SESSION['nome']) ? $_SESSION['nome'] : null );
                                 <select class="form-control" id="nomeClinica" name="nomeClinica" size="5" >
                                 <?php
                                 $con = connect();
+
+                                $query = "SELECT nosocomios.local
+                                            from nosocomios
+                                            INNER JOIN users_nosocomios
+                                            on users_nosocomios.nosocomio_id = nosocomios.id
+                                            INNER JOIN users
+                                            on users.user_id = users_nosocomios.usuario_id
+                                            where user_id=$userID
+                                            ORDER BY `$localDB`";
                 				
-								$name = mysqli_query($con, "SELECT  `$localDB` FROM  $tabelaTISS ORDER BY `$localDB`") or die(mysqli_error($con));
+								$name = mysqli_query($con, $query) or die(mysqli_error($con));
 								while ($name_row = mysqli_fetch_assoc($name)) {
 									
 									$selectItem = nl2br($name_row[$localDB]);
