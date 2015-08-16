@@ -149,6 +149,7 @@ class DataTasks
     		$query = "SELECT * FROM `$tabela` WHERE `{$this->man}` ='{$data_array['man']}'
                         AND (`{$this->descricaoDB}` LIKE '%{$data_array['principio']}%' 
     					OR `{$this->nomeDaReceitaDB}` LIKE '%{$data_array['principio']}%')
+                        AND (`usuario_id` = '{$_SESSION[user_id]}' OR `usuario_id` = '1')     
     					ORDER BY `{$this->nomeDaReceitaDB}`;";
 			$aviso1 = "Foram encontradas as seguintes receitas cuja composição inclui o mesmo principio ativo:";
 			$aviso2 = "Nome da Receita:";
@@ -156,8 +157,9 @@ class DataTasks
 			$row2 = "descricao";
 
     	} else {
-    		$query = "SELECT * FROM `$tabela` WHERE `{$this->descricaoDB}` LIKE '%{$data_array['exame']}%' 
-    					OR `{$this->nomeDB}` LIKE '%{$data_array['exame']}%' 
+    		$query = "SELECT * FROM `$tabela` WHERE (`{$this->descricaoDB}` LIKE '%{$data_array['exame']}%' 
+    					OR `{$this->nomeDB}` LIKE '%{$data_array['exame']}%')
+                        AND (`usuario_id` = '{$_SESSION[user_id]}' OR `usuario_id` = '1')
                         ORDER BY `{$this->nomeDB}` ";
 			$aviso1 = "Foram encontradas os seguintes exames que incluem a palavra chave inserida:";
 			$aviso2 = "Nome do Exame:";
@@ -182,9 +184,9 @@ class DataTasks
         			$mensagem .= "<p>$aviso2".$data_row[$row1]."</p>";
         			$mensagem .= "<p>Descricao: "."<pre>".$data_row[$row2]."</pre>";
                     if ($data_row['usuario_id'] == '1') {
-                        $mensagem .= '<button class="btn btn-info btn-lg" id="'.$data_row['id'].'">Fazer Cópia</button>'."</p>";
+                        $mensagem .= '<button class="btn_edit btn btn-info btn-lg" id="'.$data_row['id'].'">Fazer Cópia</button>'."</p>";
                     } else {
-                        $mensagem .= '<button class="btn btn-warning btn-lg" id="'.$data_row['id'].'">Editar</button>'."</p>";
+                        $mensagem .= '<button class="btn_edit btn btn-warning btn-lg" id="'.$data_row['id'].'">Editar</button>'."</p>";
                     }
         			
         			$mensagem .= "</div><hr/>";

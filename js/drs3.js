@@ -22,11 +22,14 @@ function runUpdateAjax(id) {
         //populates the form with the retrieved data
         $('#nomeDoExame').val(data_exame.nome);
         $('#descricao').val(data_exame.descricao);
-        $('#usuario_id').val(data_receita.usuario_id);
+        $('#usuario_id').val(data_exame.usuario_id);
                
 
         $('#gravarBtn').removeClass('btn-success').addClass('btn-warning').val("Gravar Mudanças");
         $('#gravarBtn').addClass('update-btn').removeClass('save-btn');
+
+        doNotShowSecondForm = false;
+        $('#myModal').modal('hide');
         
 
 
@@ -89,10 +92,14 @@ $('#envioBtn').click(function(event) { // busca de nomeDoExame ativo
             
         $('.modal-body').html(html);
         
-        $('.mostraFormBtn').trigger();
-        runUpdateAjax(this.id);
-        
-        
+        //$('#mostraFormBtn').trigger();
+
+        $('.btn_edit').on('click', function(event) {
+            event.preventDefault();
+            alert("this.id = " + this.id);
+            runUpdateAjax(this.id);
+        });
+ 
     })
     .fail(function() {
         console.log("error");

@@ -1,4 +1,5 @@
 <?php
+include_once("debugger/ChromePhp.php");
 $pageTitle="SADT";
 
 function customPageHeader() { ?>
@@ -32,10 +33,12 @@ $userEmail = $_SESSION['user_email'];
                 <form id="form1" class="form-horizontal" method="post" action="">
                     <div class="form-group"> 
                     
-                        <label class="control-label col-sm-4" for="listaExames">Selecione:
-                            Aperte CTRL para selecionar mais de um item</label>
+                        <label class="control-label col-sm-4" for="listaExames">
+                            Selecione: itens com <span class="glyphicon glyphicon-globe"></span> são globais</label>
                         <div class="col-sm-8">
-                            <select multiple id="listaExames" class="form-control" name="listaExames[]" size="5">
+                            <select multiple data-selected-text-format="count>2" id="listaExames" class="selectpicker"
+                                data-width="100%" 
+                                title='Selecione um ou mais itens' name="listaExames[]" size="10" class="form-control">
                     
                             <?php
                             
@@ -44,32 +47,39 @@ $userEmail = $_SESSION['user_email'];
                             $intermedica = "intermedica";
 
                             if(isset($_SESSION['local'])) {
-                                $local = mysql_real_escape_string($_SESSION['local']);
+                                $local = $_SESSION['local'];
                             } else {
                                 $local = $soler;
                             }
 
                             if(isset($_SESSION['nome'])) {
-                                $nome = mysql_real_escape_string($_SESSION['nome']);
+                                $nome = $_SESSION['nome'];
                             } else {
                                 $nome = NULL;
                             }
 
                             if(isset($_SESSION['convenio'])) {
-                                $convenio = mysql_real_escape_string($_SESSION['convenio']);
+                                $convenio = $_SESSION['convenio'];
                             } else {
                                 $convenio = $intermedica;
                             }
 
                              //continua daqui
                             $con = connect();                  
-                            $name = mysqli_query($con,"SELECT  `$nomeDB` FROM  `$tabelaExames` WHERE `$usuarioID` = $userID OR `$usuarioID` = 1
+                            $name = mysqli_query($con,"SELECT  * FROM  `$tabelaExames` WHERE `$usuarioID` = $userID OR `$usuarioID` = 1
                                                         ORDER BY `$nomeDB`") or die(mysqli_error($con));
                             while ($name_row = mysqli_fetch_assoc($name)) {
                                 
                                 $selectItem = nl2br($name_row[$nomeDB]);
+                                $selectItem2 = $selectItem;
+                                $icon='';
+
+                                if ($name_row['usuario_id'] == '1') {
+                                    $selectItem .= "(g)";
+                                    $icon = 'data-content="'.$selectItem2.' <span class=\'glyphicon glyphicon-globe\'></span>"';
+                                }
                             
-                                echo "<option value='".$selectItem."'>".$selectItem."</option>";
+                                echo "<option " .$icon. ' value="'.$selectItem.'">'.$selectItem2.'</option>';
                             } 
                             
                             ?>
@@ -221,9 +231,18 @@ $userEmail = $_SESSION['user_email'];
                             $con = connect();
                             
                             foreach($listaExames as $exames) {
+                            
+                                if ($strpos = strpos($exames, "(g)")) {
+                                    $usuario = 1;
+                                    $exames = substr($exames, 0, $strpos);
+
+                                } else {
+                                    $usuario = $userID;
+                                }
+                                
                                 $i++; 
                                 $examesQuery = mysqli_query($con, "SELECT `descricao` FROM  `$tabelaExames` WHERE nome = '$exames'
-                                                            AND (`$usuarioID` = $userID OR `$usuarioID` = 1) ORDER BY `descricao`");
+                                                            AND `$usuarioID` = '$usuario' ORDER BY `descricao`");
                                 $consolidado .= htmlentities($examesQuery->fetch_assoc()['descricao'], ENT_COMPAT,"UTF-8");
                                 $consolidado .= ($i < count($listaExames))  ? "&#13;&#10;" : "";
                                 

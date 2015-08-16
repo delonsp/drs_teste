@@ -39,9 +39,12 @@ $userID = $_SESSION['user_id'];
             <div class="col-md-6">
                 <form class="form-horizontal" method="post" action="" id="form1">
                     <div class="form-group">
-                        <label class="control-label col-sm-4" for="listaMedic">Selecione:</label>
+                        <label class="control-label col-sm-4" for="listaMedic">
+                            Selecione: itens com <span class="glyphicon glyphicon-globe"></span> são globais</label>
                         <div class="col-sm-8">
-                            <select multiple id="listaMedic" name="listaMedic[]" size="10" class="form-control">
+                            <select multiple data-selected-text-format="count>2" id="listaMedic" class="selectpicker"
+                                data-width="100%" 
+                                title='Selecione um ou mais itens' name="listaMedic[]" size="10" class="form-control">
                             <?php
 
                             $local = (isset($_SESSION['local']) ? $_SESSION['local'] : NULL);
@@ -56,13 +59,20 @@ $userID = $_SESSION['user_id'];
 
                             $con=connect();
                             
-                            $name = mysqli_query($con,"SELECT  `$nomeDaReceitaDB` FROM  $tabelaReceitas WHERE `$man`=$m 
+                            $name = mysqli_query($con,"SELECT  * FROM  $tabelaReceitas WHERE `$man`=$m 
                                 AND (`$usuarioID` = $userID OR `$usuarioID` = 1)  ORDER BY `$nomeDaReceitaDB`") or die(mysqli_error($con));
                             while ($name_row = mysqli_fetch_assoc($name)) {
                                 
                                 $selectItem = nl2br($name_row[$nomeDaReceitaDB]);
+                                $selectItem2 = $selectItem;
+                                $icon='';
+
+                                if ($name_row['usuario_id'] == '1') {
+                                    $selectItem .= "(g)";
+                                    $icon = 'data-content="'.$selectItem2.' <span class=\'glyphicon glyphicon-globe\'></span>"';
+                                }
                             
-                                echo "<option value='".$selectItem."'>".$selectItem."</option>";
+                                echo "<option " .$icon. ' value="'.$selectItem.'">'.$selectItem2.'</option>';
                             } 
                             
                             ?>
@@ -175,12 +185,23 @@ $userID = $_SESSION['user_id'];
                                 $consolidado = "";
                                 
                                 $listaMedic = $_POST['listaMedic'];
+
                                 $con=connect();
                                 
                                 foreach($listaMedic as $remedio) {
+
+
+                                    if ($strpos = strpos($remedio, "(g)")) {
+                                        $usuario = 1;
+                                        $remedio = substr($remedio, 0, $strpos);
+
+                                    } else {
+                                        $usuario = $userID;
+                                    }
+
                                                                             
                                     $receita = mysqli_query($con,"SELECT `$descricaoDB` FROM  $tabelaReceitas WHERE `$nomeDaReceitaDB` = '$remedio'
-                                                            AND (`$usuarioID` = $userID OR `$usuarioID` = 1)");
+                                                            AND `$usuarioID` = $usuario");
                                 
                                     $consolidado .= htmlentities($receita->fetch_assoc()[$descricaoDB], ENT_COMPAT,"UTF-8");
                                     $consolidado .= "&#10;&#13;&#10;";

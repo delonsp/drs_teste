@@ -4,9 +4,7 @@
 
 $pageTitle="Novo Exame";
 
-function customPageHeader() { ?>
-
-<?php }
+function customPageHeader() {}
 
 include_once("views/_header.php");
     
