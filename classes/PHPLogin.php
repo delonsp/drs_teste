@@ -329,8 +329,8 @@ class PHPLogin
                 // increment the failed login counter for that user
                 $sth = $this->db_connection->prepare('UPDATE users '
                         . 'SET user_failed_logins = user_failed_logins+1, user_last_failed_login = :user_last_failed_login '
-                        . 'WHERE user_name = :user_name OR user_email = :user_name');
-                $sth->execute(array(':user_name' => $user_name, ':user_last_failed_login' => time()));
+                        . 'WHERE user_name = :user_name OR user_email = :user_name2');
+                $sth->execute(array(':user_name' => $user_name, ':user_name2' => $user_name, ':user_last_failed_login' => time()));
 
                 $this->errors[] = MESSAGE_PASSWORD_WRONG;
             // has the user activated their account with the verification email
