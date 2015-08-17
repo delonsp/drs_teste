@@ -34,11 +34,10 @@ $userEmail = $_SESSION['user_email'];
                     <div class="form-group"> 
                     
                         <label class="control-label col-sm-4" for="listaExames">
-                            Selecione: itens com <span class="glyphicon glyphicon-globe"></span> são globais</label>
+                            <span class="glyphicon glyphicon-globe"></span> Itens globais</label>
                         <div class="col-sm-8">
-                            <select multiple data-selected-text-format="count>2" id="listaExames" class="selectpicker"
-                                data-width="100%" 
-                                title='Selecione um ou mais itens' name="listaExames[]" size="10" class="form-control">
+                            <select multiple data-selected-text-format="count>2" id="listaExames" class="selectpicker form-control" 
+                                title='Selecione um ou mais itens' name="listaExames[]" size="10">
                     
                             <?php
                             
@@ -76,7 +75,7 @@ $userEmail = $_SESSION['user_email'];
 
                                 if ($name_row['usuario_id'] == '1') {
                                     $selectItem .= "(g)";
-                                    $icon = 'data-content="'.$selectItem2.' <span class=\'glyphicon glyphicon-globe\'></span>"';
+                                    $icon = 'data-icon="glyphicon-globe"';
                                 }
                             
                                 echo "<option " .$icon. ' value="'.$selectItem.'">'.$selectItem2.'</option>';
@@ -108,7 +107,7 @@ $userEmail = $_SESSION['user_email'];
                     <div class="form-group">
                         <label for="nomeConvenio" class="control-label col-sm-4">Convenio:</label>
                         <div class="col-sm-8">
-                            <select id="nomeConvenio" class="form-control" name="nomeConvenio" size="5">
+                            <select id="nomeConvenio" data-dropup-auto="false" class="selectpicker form-control" name="nomeConvenio" size="5">
                                 <?php
                                     $con = connect();
                                     $tabela ='logosConvenios';
@@ -138,7 +137,7 @@ $userEmail = $_SESSION['user_email'];
                     <div class="form-group">
                         <label for="clinica" class="control-label col-sm-4">Clínica:</label>
                         <div class="col-sm-8">
-                            <select id="nomeClinica" size="5" class="form-control" name="nomeClinica" >
+                            <select id="nomeClinica" size="5" class="selectpicker form-control" name="nomeClinica" >
                             <?php
                     
                                 $query = "SELECT nosocomios.local

@@ -48,9 +48,6 @@
 	</style>
 </head>
 <body>
-<a href="#" class="scrolltop">
-        <span>up</span>
-    </a>
     <!-- begins navbar -->
 	<div class="navbar navbar-inverse navbar-fixed-top">
       
@@ -97,7 +94,7 @@
     </div>
     <!-- ends navbar -->
     <div class="row">
-        <div class="col-sm-3">
+        <div class="col-md-3 col-sm-4 col-xs-8" id="logged-in-as">
             <?php echo ($_SESSION['user_name']  ? '<div class="alert alert-warning" role="alert">
   <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> ' . WORDING_YOU_ARE_LOGGED_IN_AS .
   "<b>" . $_SESSION['user_name']. "</b>" . '</div>' : '' ); ?>

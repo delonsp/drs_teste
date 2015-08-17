@@ -40,11 +40,10 @@ $userID = $_SESSION['user_id'];
                 <form class="form-horizontal" method="post" action="" id="form1">
                     <div class="form-group">
                         <label class="control-label col-sm-4" for="listaMedic">
-                            Selecione: itens com <span class="glyphicon glyphicon-globe"></span> são globais</label>
+                            <span class="glyphicon glyphicon-globe"></span> Itens globais</label>
                         <div class="col-sm-8">
-                            <select multiple data-selected-text-format="count>2" id="listaMedic" class="selectpicker"
-                                data-width="100%" 
-                                title='Selecione um ou mais itens' name="listaMedic[]" size="10" class="form-control">
+                            <select multiple data-selected-text-format="count>2" id="listaMedic" class="selectpicker form-control" 
+                                title='Selecione um ou mais itens' name="listaMedic[]" size="10">
                             <?php
 
                             $local = (isset($_SESSION['local']) ? $_SESSION['local'] : NULL);
@@ -69,7 +68,7 @@ $userID = $_SESSION['user_id'];
 
                                 if ($name_row['usuario_id'] == '1') {
                                     $selectItem .= "(g)";
-                                    $icon = 'data-content="'.$selectItem2.' <span class=\'glyphicon glyphicon-globe\'></span>"';
+                                    $icon = 'data-icon="glyphicon-globe"';
                                 }
                             
                                 echo "<option " .$icon. ' value="'.$selectItem.'">'.$selectItem2.'</option>';
@@ -108,7 +107,7 @@ $userID = $_SESSION['user_id'];
                     <div class="form-group">
                         <label for="clinica" class="control-label col-sm-4">Clínica:</label>
                         <div class="col-sm-8">
-                            <select id="nomeClinica" class="form-control" name="nomeClinica" size="5">
+                            <select id="nomeClinica" class="selectpicker form-control" name="nomeClinica" size="5">
                             <?php
                                 $con=connect();
 
