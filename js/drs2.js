@@ -95,7 +95,6 @@ $('#envioBtn').click(function(event) { // busca de principio ativo
         
         $('.btn_edit').on('click', function(event) {
             event.preventDefault();
-            alert("this.id = " + this.id);
             runUpdateAjax(this.id);
         });
         
