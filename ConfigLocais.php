@@ -7,7 +7,7 @@ if ($login->isUserLoggedIn() == true) {
     // the user is logged in. you can do whatever you want here.
     // for demonstration purposes, we simply show the "you are logged in" view.
     // include the configs / constants for the database connection
-	require_once("config/db.php");
+	require_once("config/config.php");
 
 	// load the User Config class
 	require_once("classes/LocaisConfig.php");

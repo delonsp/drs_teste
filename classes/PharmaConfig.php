@@ -5,7 +5,7 @@
  * handles the user work places registration
  */
 session_start();
-require_once("config/db.php");
+require_once("config/config.php");
 require_once("classes/LocaisConfig.php");
 
 

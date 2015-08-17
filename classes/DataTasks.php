@@ -6,7 +6,7 @@
  */
 
 
-require_once("config/db.php");
+require_once("config/config.php");
 session_start();
 
 class DataTasks 
