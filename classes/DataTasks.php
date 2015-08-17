@@ -152,7 +152,7 @@ class DataTasks
                         AND (`usuario_id` = '{$_SESSION[user_id]}' OR `usuario_id` = '1')     
     					ORDER BY `{$this->nomeDaReceitaDB}`;";
 			$aviso1 = "Foram encontradas as seguintes receitas cuja composição inclui o mesmo principio ativo:";
-			$aviso2 = "Nome da Receita:";
+			$aviso2 = "Nome da Receita: ";
 			$row1 = "nomeDaReceita";
 			$row2 = "descricao";
 
@@ -162,7 +162,7 @@ class DataTasks
                         AND (`usuario_id` = '{$_SESSION[user_id]}' OR `usuario_id` = '1')
                         ORDER BY `{$this->nomeDB}` ";
 			$aviso1 = "Foram encontradas os seguintes exames que incluem a palavra chave inserida:";
-			$aviso2 = "Nome do Exame:";
+			$aviso2 = "Nome do Exame: ";
 			$row1 = "nome";
 			$row2 = "descricao";
 
@@ -179,10 +179,10 @@ class DataTasks
         		while ($data_row = $data_retrieve->fetch_assoc()) {
         			$mensagem .= '<div class="modalDiv">';
                     if ($data_row['usuario_id'] == '1') {
-                        $mensagem .= "<span style='color:red;'>(registro global)</span>";
+                        $mensagem .= '<p><span class="glyphicon glyphicon-globe blue"></span><span class="blue"> registro global</span></p>';
                     }
         			$mensagem .= "<p>$aviso2".$data_row[$row1]."</p>";
-        			$mensagem .= "<p>Descricao: "."<pre>".$data_row[$row2]."</pre>";
+        			$mensagem .= "<p>Descrição: "."<pre>".$data_row[$row2]."</pre>";
                     if ($data_row['usuario_id'] == '1') {
                         $mensagem .= '<button class="btn_edit btn btn-info btn-lg" id="'.$data_row['id'].'">Fazer Cópia</button>'."</p>";
                     } else {

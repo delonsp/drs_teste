@@ -45,6 +45,10 @@
 		padding-left: 50px;
 		margin-top: 10px;
 	}
+
+    .blue {
+        color: blue;
+    }
 	</style>
 </head>
 <body>
