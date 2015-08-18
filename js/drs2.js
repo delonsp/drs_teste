@@ -112,12 +112,14 @@ $('#envioBtn').click(function(event) { // busca de principio ativo
 $('#mostraFormBtn').click(function(event) { // esconde formulario de principio e mostra formulario para dar entrada com medicamento
     doNotShowSecondForm = false;
     $('#myModal').modal('hide');
+    $('#secondFormRow').find("input[type=text], textarea").val("");
   
 });
 
 $('#salvarDireto').click(function(event) {
     event.preventDefault();
     $('#firstFormRow').hide();
+    $('#secondFormRow').find("input[type=text], textarea").val("");
     $('#secondFormRow').removeClass('hidden');
 
 });
