@@ -45,23 +45,10 @@ $userEmail = $_SESSION['user_email'];
                             $soler = "Clinica Medica Soler. Av. Satélite 84, São Mateus, São Paulo, SP | tel (11) 2014-4599";
                             $intermedica = "intermedica";
 
-                            if(isset($_SESSION['local'])) {
-                                $local = $_SESSION['local'];
-                            } else {
-                                $local = $soler;
-                            }
-
-                            if(isset($_SESSION['nome'])) {
-                                $nome = $_SESSION['nome'];
-                            } else {
-                                $nome = NULL;
-                            }
-
-                            if(isset($_SESSION['convenio'])) {
-                                $convenio = $_SESSION['convenio'];
-                            } else {
-                                $convenio = $intermedica;
-                            }
+                            
+                            $local = (isset($_POST['nomeClinica']) ? $_POST['nomeClinica'] : $_SESSION['local']);
+                            $nome = (isset($_POST['nomeDoPaciente']) ? $_POST['nomeDoPaciente'] : $_SESSION['nome']);
+                            $convenio = (isset($_POST['nomeConvenio']) ? $_POST['nomeConvenio'] : $_SESSION['convenio']);
 
                              //continua daqui
                             $con = connect();                  

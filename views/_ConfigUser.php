@@ -97,7 +97,7 @@ $userEmail = $_SESSION['user_email'];
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-sm-4" for="input_config_pharma">Quero cadastrar emails de farmácias</label>
+                            <label class="control-label col-sm-4" for="input_config_pharma">Quero cadastrar farmácias</label>
                             <div class="col-sm-8">
                                                                 
                                 <input type="checkbox" class="form-control" id="input_config_pharma" name="config_pharma" />

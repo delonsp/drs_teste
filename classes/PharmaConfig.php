@@ -122,7 +122,7 @@ class PharmaConfig extends LocaisConfig
         		} else {
 
 
-        			$query = "INSERT INTO `users_pharmas` (usuario_id, pharma_id) VALUES ('{$_SESSION['user_id']}','$pharma_id')";
+        			$query = "INSERT INTO `users_pharmas` (usuario_id, pharma_id, enviar_email) VALUES ('{$_SESSION['user_id']}','$pharma_id', '1')";
 		        	$query_insert_into_users_pharmas = $this->db_connection->query($query);
 
 		            if ($query_insert_into_users_pharmas) {

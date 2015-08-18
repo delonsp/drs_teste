@@ -46,15 +46,15 @@ $userID = $_SESSION['user_id'];
                                 title='Selecione um ou mais itens' name="listaMedic[]" size="10">
                             <?php
 
-                            $local = (isset($_SESSION['local']) ? $_SESSION['local'] : NULL);
+                            $local = (isset($_POST['nomeClinica']) ? $_POST['nomeClinica'] : $_SESSION['local']);
 
-                            $nome = (isset($_SESSION['nome']) ? $_SESSION['nome'] : NULL);
+                            $nome = (isset($_POST['nomeDoPaciente']) ? $_POST['nomeDoPaciente'] : $_SESSION['nome']);
 
-                            $end_paciente = (isset($_SESSION['end_paciente']) ? $_SESSION['end_paciente'] : NULL);
+                            $end_paciente = (isset($_POST['endDoPaciente']) ? $_POST['endDoPaciente'] : $_SESSION['end_paciente']);
 
-                            $email_paciente = (isset($_SESSION['email_paciente']) ? $_SESSION['email_paciente'] : NULL);
+                            $email_paciente = (isset($_POST['emailDoPaciente']) ? $_POST['emailDoPaciente'] : $_SESSION['email_paciente']);
 
-                            $tels = (isset($_SESSION['tels']) ? $_SESSION['tels'] : NULL);
+                            $tels = (isset($_POST['telsDoPaciente']) ? $_POST['telsDoPaciente'] : $_SESSION['tels']);
 
                             $con=connect();
                             
@@ -233,12 +233,13 @@ $userID = $_SESSION['user_id'];
 
                             $nome_pharma = preg_replace('/\s+/', '', $pharma['nome']);
 
-                            $checked = ($pharma['enviar_email'] == 1 ? "yes" : "no");
+                            $checked = ($pharma['enviar_email'] == 1 ? "checked" : "");
+                            
                     ?>
                     <div class="checkbox">
 
                         <label>
-                            <input type="checkbox" checked="<?php echo $checked;?>" id="email_<?php echo $i; ?>"  name="email_<?php echo $i;?>"  />
+                            <input type="checkbox" <?php echo $checked; ?> id="email_<?php echo $i; ?>"  name="email_<?php echo $i;?>"  />
                             <?php echo "Email para: ".$pharma['nome']; ?>
                         </label>
 
@@ -249,7 +250,7 @@ $userID = $_SESSION['user_id'];
                     <div class="checkbox">
                        
                         <label>
-                            <input type="checkbox" checked="<?php echo $checked;?>" id="email_mim"  name="email_mim"  />
+                            <input type="checkbox" <?php echo $checked; ?> id="email_mim"  name="email_mim"  />
                             Email com cópia para mim
                         </label>
                         

@@ -29,6 +29,9 @@ if(!empty($_POST['nome_pharma']) &&
 	 					'emails' => $_POST['emails_pharma'],
 	 					'enviar_email' => $_POST['enviar_email'] // nao vai para a tabela PharmaConfig e sim para a tabela users_pharmas
 	 					);
+
+                include ("debugger/ChromePhp.php");
+                ChromePhp::log("enviar email = " . $_POST['enviar_email']);
 	$pharmaConfig = new pharmaConfig();
 	$pharmaConfig->registerNewPharma($data_array);
 	echo showMessages($pharmaConfig);
