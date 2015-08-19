@@ -42,7 +42,8 @@ $userID = $_SESSION['user_id'];
                         <label class="control-label col-sm-4" for="listaMedic">
                             <span class="glyphicon glyphicon-globe"></span> Itens globais</label>
                         <div class="col-sm-8">
-                            <select multiple data-selected-text-format="count>2" id="listaMedic" class="selectpicker form-control" 
+                            <select data-dropup-auto="false" 
+                            multiple data-selected-text-format="count>2" id="listaMedic" class="selectpicker form-control" 
                                 title='Selecione um ou mais itens' name="listaMedic[]" size="10">
                             <?php
 
