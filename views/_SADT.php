@@ -36,7 +36,8 @@ $userEmail = $_SESSION['user_email'];
                         <label class="control-label col-sm-4" for="listaExames">
                             <span class="glyphicon glyphicon-globe"></span> Itens globais</label>
                         <div class="col-sm-8">
-                            <select multiple data-selected-text-format="count>2" id="listaExames" class="selectpicker form-control" 
+                            <select data-dropup-auto="false" 
+                            multiple data-selected-text-format="count>2" id="listaExames" class="selectpicker form-control" 
                                 title='Selecione um ou mais itens' name="listaExames[]" size="10">
                     
                             <?php
