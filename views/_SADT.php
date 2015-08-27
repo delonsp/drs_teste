@@ -21,6 +21,11 @@ $userEmail = $_SESSION['user_email'];
             </div>
         </div>
         <div class="row">
+            <div class="col-md-12">
+                <?php include_once("CheckUserConfig.php");?>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-md-2 col-md-offset-5 col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2" id="editBtn">
                
                 <a href="novoExame.php" class="btn btn-success" >Inserir/Editar Exame</a>

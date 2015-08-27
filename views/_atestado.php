@@ -27,6 +27,11 @@ $userID = $_SESSION['user_id'];
                     <h2 class="section_header2">Atestado Médico</h2>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <?php include_once("CheckUserConfig.php");?>
+                </div>
+            </div>
         	<div class="row form">
              	<div class="col-md-10">
                     <form class="form-horizontal" method="post" action="imprimirAtestado.php" id="form">

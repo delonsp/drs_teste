@@ -31,6 +31,11 @@ $userID = $_SESSION['user_id'];
             </div>
         </div>
         <div class="row">
+            <div class="col-md-12">
+                <?php include_once("CheckUserConfig.php");?>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-md-2 col-md-offset-5 col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2" id="editBtn">
                 <a href="NovaReceita.php?man=<?php echo $m; ?>" class="btn btn-success" >Inserir/Editar Receita</a>
             </div>
