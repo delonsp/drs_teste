@@ -34,9 +34,9 @@ $userID = $_SESSION['user_id'];
                             <label class="control-label col-sm-4" for="nomeDoPaciente">Nome do Paciente:</label>
                             <div class="col-sm-8">
                                 <?php if ($nome) { ?>
-                                    <input type="text" class="form-control" id="nomeDoPaciente" value="<?php echo $nome ?>" size="30" name="nomeDoPaciente" >
+                                    <input type="text" class="form-control" id="nomeDoPaciente" value="<?php echo $nome ?>" size="30" name="nomeDoPaciente" minlength="5" required>
                                 <?php } else { ?>
-                                    <input type="text" class="form-control" id="nomeDoPaciente" esize="30" name="nomeDoPaciente" >
+                                    <input type="text" class="form-control" id="nomeDoPaciente" esize="30" name="nomeDoPaciente" minlength="5" required>
                                 <?php } ?>
                             </div>
                         </div>
@@ -115,6 +115,36 @@ $userID = $_SESSION['user_id'];
         	</div>
     	</div>
     </div>
+    <script src="js/geolocator.js"></script>
+    <script type="text/javascript">
+
+        $('#form').validate({ // initialize the plugin
+            rules: {
+                nomeDoPaciente: {
+                    required: true,
+                    minlength: 5
+                },
+                nomeClinica: {
+                    required: true,
+                },
+                tipoAtestado: {
+                    required: true
+                }
+                
+            },
+            messages: {
+                nomeDoPaciente: {
+                    required: "Por favor coloque o nome do paciente",
+                    minlength: "Coloque um nome válido"
+                },
+                nomeClinica: "Por favor escolha um local de atendimento",
+                tipoAtestado: "Por favor escolha um tipo de atestado"
+            },
+        });
+
+
+
+    </script>
     <?php include_once("views/_footer.php"); ?>
 
  

@@ -38,7 +38,7 @@ $userEmail = $_SESSION['user_email'];
                         <div class="col-sm-8">
                             <select data-dropup-auto="false" 
                             multiple data-selected-text-format="count>2" id="listaExames" class="selectpicker form-control" 
-                                title='Selecione um ou mais itens' name="listaExames[]" size="10">
+                                title='Selecione um ou mais itens' name="listaExames" size="10">
                     
                             <?php
                             
@@ -87,7 +87,7 @@ $userEmail = $_SESSION['user_email'];
 
                             <?php } else { ?>
 
-                            <input type="text" class="form-control" id="nomeDoPaciente" size="30" name="nomeDoPaciente" placeholder="obrigatório"/>
+                            <input type="text" class="form-control" id="nomeDoPaciente" size="30" name="nomeDoPaciente" placeholder="obrigatório" required/>
 
                             <?php  } ?>
                         </div><!-- fecha controls text nomeDoPaciente-->
@@ -95,7 +95,7 @@ $userEmail = $_SESSION['user_email'];
                     <div class="form-group">
                         <label for="nomeConvenio" class="control-label col-sm-4">Convenio:</label>
                         <div class="col-sm-8">
-                            <select id="nomeConvenio" data-dropup-auto="false" class="selectpicker form-control" name="nomeConvenio" size="5">
+                            <select id="nomeConvenio" data-dropup-auto="false" class="selectpicker form-control" name="nomeConvenio" id="nomeConvenio" size="5">
                                 <?php
                                     $con = connect();
                                     $tabela ='logosConvenios';
@@ -125,7 +125,7 @@ $userEmail = $_SESSION['user_email'];
                     <div class="form-group">
                         <label for="clinica" class="control-label col-sm-4">Clínica:</label>
                         <div class="col-sm-8">
-                            <select id="nomeClinica" size="5" class="selectpicker form-control" name="nomeClinica" >
+                            <select id="nomeClinica" size="5" class="selectpicker form-control" name="nomeClinica" id="nomeClinica">
                             <?php
                     
                                 $query = "SELECT nosocomios.local
@@ -255,6 +255,51 @@ $userEmail = $_SESSION['user_email'];
         
         </div>
     </div>
+
+    <script>
+
+         $('#form1').validate({ // initialize the plugin
+            ignore: [],
+            rules: {
+                nomeDoPaciente: {
+                    required: true,
+                    minlength: 5
+                },
+                nomeConvenio: {
+                    required: true,
+                },
+                nomeClinica: {
+                    required: true,
+                },
+                listaExames: {
+                    required: true
+                }
+                
+            },
+            messages: {
+                nomeDoPaciente: {
+                    required: "Por favor coloque o nome do paciente",
+                    minlength: "Coloque um nome válido"
+                },
+                nomeConvenio: "Por favor escolha um convênio",
+                nomeClinica: "Por favor escolha um local de atendimento",
+                listaExames: "Por favor escolha um ou mais exames"
+            },
+            errorPlacement: function(error, element) {
+                if (element.attr("name") == "listaExames") {
+                   error.insertAfter(".bootstrap-select:first");
+                } else if (element.attr("name") == "nomeConvenio") {
+                    error.insertAfter(".bootstrap-select:eq(1)");
+                } else if (element.attr("name") == "nomeClinica") {
+                    error.insertAfter(".bootstrap-select:eq(2)");
+                } else {
+                  error.insertAfter(element);
+                }
+            },
+        });
+
+
+    </script>
     
 	<?php include_once("views/_footer.php"); ?>
 

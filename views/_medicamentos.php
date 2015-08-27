@@ -44,7 +44,7 @@ $userID = $_SESSION['user_id'];
                         <div class="col-sm-8">
                             <select data-dropup-auto="false" 
                             multiple data-selected-text-format="count>2" id="listaMedic" class="selectpicker form-control" 
-                                title='Selecione um ou mais itens' name="listaMedic[]" size="10">
+                                title='Selecione um ou mais itens' name="listaMedic" size="10">
                             <?php
 
                             $local = (isset($_POST['nomeClinica']) ? $_POST['nomeClinica'] : $_SESSION['local']);
@@ -83,26 +83,26 @@ $userID = $_SESSION['user_id'];
                         <label class="control-label col-sm-4" for="nomeDoPaciente">Nome do paciente:</label>
                         <div class="col-sm-8">
                                                             
-                            <input type="text" class="form-control" id="nomeDoPaciente" name="nomeDoPaciente" value="<?php echo $nome; ?>"/>
+                            <input type="text" class="form-control" id="nomeDoPaciente" name="nomeDoPaciente" value="<?php echo $nome; ?>" required placeholder="obrigatório"/>
 
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-4" for="endDoPaciente">Endereço:</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="endDoPaciente"  name="endDoPaciente" value="<?php echo $end_paciente; ?>">
+                            <input type="text" class="form-control" id="endDoPaciente"  name="endDoPaciente" value="<?php echo $end_paciente; ?>" placeholder="opcional">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-4" for="telsDoPaciente">Telefones:</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="telsDoPaciente" name="telsDoPaciente" size="30" value="<?php echo $tels; ?>" >
+                            <input type="text" class="form-control" id="telsDoPaciente" name="telsDoPaciente" size="30" value="<?php echo $tels; ?>" placeholder="opcional" >
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-4" for="emailDoPaciente">Email:</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="emailDoPaciente" name="emailDoPaciente" value="<?php echo $email_paciente; ?>" >
+                            <input type="text" class="form-control" id="emailDoPaciente" name="emailDoPaciente" value="<?php echo $email_paciente; ?>" placeholder="opcional" >
                         </div>
                     </div>
                     <div class="form-group">
@@ -282,8 +282,9 @@ $userID = $_SESSION['user_id'];
 
                     <?php  } else // closes the if(...)
                     
-                        echo '<div class="alert alert-info">Não se esqueça de preencher todos os campos ao lado e clicar enviar.<br>
-                        Se houver interesse em mandar email para alguma farmácia, insira também os telefones de contato.</div>';
+                        echo '<div class="alert alert-info">Não se esqueça de preencher os campos ao lado e clicar enviar.<br>
+                        Os campos telefones, endereço e email são opcionais.<br>
+                        Se houver interesse em mandar email para alguma farmácia, insira os telefones de contato.</div>';
                       
                     ?>
                     
@@ -291,6 +292,45 @@ $userID = $_SESSION['user_id'];
              </div>
         </div>
     </div>
+    <script src="js/geolocator.js"></script>
+    <script>
+
+         $('#form1').validate({ // initialize the plugin
+            ignore: [],
+            rules: {
+                nomeDoPaciente: {
+                    required: true,
+                    minlength: 5
+                },
+                nomeClinica: {
+                    required: true,
+                },
+                listaMedic: {
+                    required: true
+                }
+                
+            },
+            messages: {
+                nomeDoPaciente: {
+                    required: "Por favor coloque o nome do paciente",
+                    minlength: "Coloque um nome válido"
+                },
+                nomeClinica: "Por favor escolha um local de atendimento",
+                listaMedic: "Por favor escolha um ou mais medicamentos"
+            },
+            errorPlacement: function(error, element) {
+                if (element.attr("name") == "listaMedic") {
+                    error.insertAfter(".bootstrap-select:first");
+                } else if (element.attr("name") == "nomeClinica") {
+                    error.insertAfter(".bootstrap-select:eq(1)");
+                } else {
+                  error.insertAfter(element);
+                }
+            },
+        });
+
+
+    </script>
 
 <?php include_once('views/_footer.php'); ?>
 

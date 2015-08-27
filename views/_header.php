@@ -20,6 +20,8 @@
     <link rel="stylesheet" type="text/css" href="css/animate.css"> -->
     <!-- <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900,300italic,400italic,700italic,900italic" rel="stylesheet" type='text/css'> -->
     <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/messages_pt_BR.min.js"></script>
     <style type="text/css">
 
 

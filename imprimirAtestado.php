@@ -126,7 +126,12 @@ session_start();
 
         <div id="signature">
         	<?php
-		        echo "<b>".htmlEntities("São Paulo, $date_string")."</b>";
+        		if ($_SESSION['cidade']) {
+                        $city = $_SESSION['cidade'].", ";
+                    } else {
+                        $city = "";
+                    }
+		        echo "<b>".htmlEntities("$city $date_string")."</b>";
 			?>
         	<br><br><br><br><br><hr/>
         	Carimbo e Assinatura do Médico
