@@ -79,11 +79,11 @@ session_start();
 
         	if ($_POST['tipoAtestado'] == 'Acompanhante') {
         		$text = "O Sr.(a) acima esteve acompanhando o(a) paciente ________________________________".
-        		"______________ em consulta médica urológica, na data de ".$date_string. ". ";
+        		"______________ em consulta médica, na data de ".$date_string. ". ";
         		
         	} else {
         		$text = "O(A) paciente acima foi atendido(a) na data de ".$date_string. ". ";
-        		$trail = "Veio para consulta médica urológica.";
+        		$trail = "Veio para consulta médica.";
         	}
         	
         	if ($_POST['horaDeChegada'] && $_POST['horaDeChegada'] != '') {
