@@ -38,7 +38,7 @@ $userEmail = $_SESSION['user_email'];
                         <div class="col-sm-8">
                             <select data-dropup-auto="false" 
                             multiple data-selected-text-format="count>2" id="listaExames" class="selectpicker form-control" 
-                                title='Selecione um ou mais itens' name="listaExames" size="10">
+                                title='Selecione um ou mais itens' name="listaExames[]" size="10">
                     
                             <?php
                             
@@ -271,7 +271,7 @@ $userEmail = $_SESSION['user_email'];
                 nomeClinica: {
                     required: true,
                 },
-                listaExames: {
+                "listaExames[]": {
                     required: true
                 }
                 
@@ -283,10 +283,10 @@ $userEmail = $_SESSION['user_email'];
                 },
                 nomeConvenio: "Por favor escolha um convênio",
                 nomeClinica: "Por favor escolha um local de atendimento",
-                listaExames: "Por favor escolha um ou mais exames"
+                "listaExames[]": "Por favor escolha um ou mais exames"
             },
             errorPlacement: function(error, element) {
-                if (element.attr("name") == "listaExames") {
+                if (element.attr("name") == "listaExames[]") {
                    error.insertAfter(".bootstrap-select:first");
                 } else if (element.attr("name") == "nomeConvenio") {
                     error.insertAfter(".bootstrap-select:eq(1)");

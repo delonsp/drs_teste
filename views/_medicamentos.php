@@ -44,7 +44,7 @@ $userID = $_SESSION['user_id'];
                         <div class="col-sm-8">
                             <select data-dropup-auto="false" 
                             multiple data-selected-text-format="count>2" id="listaMedic" class="selectpicker form-control" 
-                                title='Selecione um ou mais itens' name="listaMedic" size="10">
+                                title='Selecione um ou mais itens' name="listaMedic[]" size="10">
                             <?php
 
                             $local = (isset($_POST['nomeClinica']) ? $_POST['nomeClinica'] : $_SESSION['local']);
@@ -305,7 +305,7 @@ $userID = $_SESSION['user_id'];
                 nomeClinica: {
                     required: true,
                 },
-                listaMedic: {
+                "listaMedic[]": {
                     required: true
                 }
                 
@@ -316,10 +316,10 @@ $userID = $_SESSION['user_id'];
                     minlength: "Coloque um nome válido"
                 },
                 nomeClinica: "Por favor escolha um local de atendimento",
-                listaMedic: "Por favor escolha um ou mais medicamentos"
+                "listaMedic[]": "Por favor escolha um ou mais medicamentos"
             },
             errorPlacement: function(error, element) {
-                if (element.attr("name") == "listaMedic") {
+                if (element.attr("name") == "listaMedic[]") {
                     error.insertAfter(".bootstrap-select:first");
                 } else if (element.attr("name") == "nomeClinica") {
                     error.insertAfter(".bootstrap-select:eq(1)");
