@@ -9,7 +9,8 @@ body, table {
 }
 
 #signature {
-   
+   position: absolute;
+   top: 1100px; left: 800px;
    width:250px;
    margin-top: 20px;   
    float:right;
