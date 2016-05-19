@@ -33,13 +33,23 @@ if(isset($_POST['receitas2']) && !empty($_POST['receitas2'])) {
 
 	try {
 
-		$mail->CharSet="UTF-8";
+		// $mail->CharSet="UTF-8";
 
+		// $mail->IsSMTP();                                      // Set mailer to use SMTP
+		// $mail->Host     = "srv58.hosting24.com";
+		// $mail->Port     = 465;
+		// $mail->SMTPAuth = true;                               // Enable SMTP authentication
+		// $mail->Username = 'alain_urologista@drsolutionapp.info';                            // SMTP username
+		// $mail->Password = 'pto2phil';                           // SMTP password
+		// $mail->SMTPSecure = 'ssl';                            // Enable encryption, 'ssl' also accepted
+
+		$mail->CharSet="UTF-8";
+		$mail->SMTPDebug = 1;
 		$mail->IsSMTP();                                      // Set mailer to use SMTP
-		$mail->Host     = "srv58.hosting24.com";
+		$mail->Host     = "smtpcorp.com";
 		$mail->Port     = 465;
 		$mail->SMTPAuth = true;                               // Enable SMTP authentication
-		$mail->Username = 'alain_urologista@drsolutionapp.info';                            // SMTP username
+		$mail->Username = 'alain.dutra@gmail.com';                            // SMTP username
 		$mail->Password = 'pto2phil';                           // SMTP password
 		$mail->SMTPSecure = 'ssl';                            // Enable encryption, 'ssl' also accepted
 		
